@@ -6,7 +6,7 @@ public class Card {
 
     }
 
-    public Card(String r, String s){
+    public Card(String name, int wert, char farbe){
 
     }
 

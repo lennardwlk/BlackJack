@@ -57,8 +57,6 @@ public class Card {
             int stelle=rand.nextInt(kartenEinlesen().getLength());
             stapel.push(kartenEinlesen().getItem(stelle));
             kartenEinlesen().delete(stelle);
-            System.out.println(i);
-            System.out.println(stapel.top());
         }
         return stapel;
     }

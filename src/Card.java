@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
 
 public class Card {
     private String name;
@@ -29,7 +30,7 @@ public class Card {
         return this.farbe;
     }
 
-    public DynArray<Card> kartenEinlesen() {
+    private DynArray<Card> kartenEinlesen() {
         DynArray<Card>karten = new DynArray<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("Karten.csv"))) {
             String line;
@@ -47,5 +48,18 @@ public class Card {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public Stack<Card> kartenMischen(){
+        Random rand = new Random();
+        Stack<Card> stapel = new Stack<>();
+        for(int i=kartenEinlesen().getLength(); i>0; i--){
+            int stelle=rand.nextInt(kartenEinlesen().getLength());
+            stapel.push(kartenEinlesen().getItem(stelle));
+            kartenEinlesen().delete(stelle);
+            System.out.println(i);
+            System.out.println(stapel.top());
+        }
+        return stapel;
     }
 }

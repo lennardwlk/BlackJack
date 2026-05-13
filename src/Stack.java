@@ -28,6 +28,13 @@ public class Stack<ContentType> {
      * Methode isEmpty(): Wahrheitswert
      * Wenn die Schlange kein Element enthaelt, wird der Wert wahr zurueckgegeben, sonst der Wert falsch.
      */
+    public boolean isEmpty(){
+        if(this.top==null){
+            return true;
+        } else{
+            return false;
+        }
+    }
 
 
 
@@ -35,6 +42,13 @@ public class Stack<ContentType> {
      * Methode top(): Inhaltstyp <br />
      * Der Inhalt des obersten Elements des Stapels wird zurueckgegeben, das Element aber nicht entnommen.
      */
+
+    public ContentType top(){
+        if(this.isEmpty()) {
+            return null;
+        }
+        return this.top.content;
+    }
 
 
     /**
@@ -44,6 +58,14 @@ public class Stack<ContentType> {
      * @param content: Inhaltstyp
      */
 
+    public void push(ContentType content){
+        if(content!=null) {
+            Node node = new Node(content);
+            node.setNext(this.top);
+            this.top = node;
+        }
+    }
+
 
     /**
      * Methode pop(): Inhaltstyp <br />
@@ -51,6 +73,27 @@ public class Stack<ContentType> {
      *
      * @return Inhaltstyp
      */
+
+    public ContentType pop() {
+        if (this.top.getContent() == null) {
+            return null;
+        } else {
+            ContentType speicher = this.top.getContent();
+            this.top = this.top.getNext();
+            return speicher;
+        }
+    }
+
+    public void printStack(Stack <ContentType> stack){
+        while(stack.top.getContent() != null){
+            System.out.println(stack.top.getContent());
+            stack.pop();
+            if(stack.top.getContent()==null) {
+                break;
+            }
+        }
+    }
+
 
 
     /* --------- Anfang der privaten inneren Klasse -------------- */

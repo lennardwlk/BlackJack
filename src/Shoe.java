@@ -1,5 +1,5 @@
 public class Shoe {
-    private Card[] cards;
+    private Stack <Card>[] cards;
 
     public void Shoe(){
 

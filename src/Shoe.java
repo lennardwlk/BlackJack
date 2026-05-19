@@ -6,18 +6,11 @@ import java.util.Random;
 public class Shoe {
     private Stack<Card> cards;
 
-    public void Shoe(){
+    public Shoe(){
         this.cards=kartenMischen();
     }
 
-    public void Shoe(int n){
-
-    }
-
-    public void shuffle() {
-
-    }
-    public DynArray<Card> kartenEinlesen() {
+    private DynArray<Card> kartenEinlesen() {
         DynArray<Card>karten = new DynArray<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("Karten.csv"))) {
             String line;
@@ -37,7 +30,7 @@ public class Shoe {
         }
     }
 
-    public Stack<Card> kartenMischen(){
+    private Stack<Card> kartenMischen(){
         Random rand = new Random();
         Stack<Card> stapel = new Stack<>();
         for(int i=kartenEinlesen().getLength(); i>0; i--){
@@ -46,6 +39,14 @@ public class Shoe {
             kartenEinlesen().delete(stelle);
         }
         return stapel;
+    }
+
+    public Stack<Card> getStapel(){
+        return this.cards;
+    }
+
+    public Card getObersteKarte(){
+        return this.cards.pop();
     }
 }
 

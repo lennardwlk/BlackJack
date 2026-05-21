@@ -33,10 +33,11 @@ public class Shoe {
     private Stack<Card> kartenMischen(){
         Random rand = new Random();
         Stack<Card> stapel = new Stack<>();
-        for(int i=kartenEinlesen().getLength(); i>0; i--){
-            int stelle=rand.nextInt(kartenEinlesen().getLength());
-            stapel.push(kartenEinlesen().getItem(stelle));
-            kartenEinlesen().delete(stelle);
+        DynArray<Card> ungemischt=kartenEinlesen();
+        for(int i=ungemischt.getLength(); i>0; i--){
+            int stelle=rand.nextInt(ungemischt.getLength());
+            stapel.push(ungemischt.getItem(stelle));
+            ungemischt.delete(stelle);
         }
         return stapel;
     }

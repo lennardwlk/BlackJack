@@ -1,34 +1,47 @@
 public class Hand {
-    private Card cards[];
-    private int value;
+    private DynArray<Card> hand;
 
     public Hand(){
-
+        this.hand=hand;
     }
 
     public void addCard(Card c){
-
+        this.hand.append(c);
     }
 
     public boolean checkBlackjack(){
-        return true;
+        if(wert(this.hand)==21&&this.hand.getLength()==2){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     public boolean checkFiveCardCharlie(){
-        return true;
+        if(this.hand.getLength()==5){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     public boolean checkBust(){
-        return true;
+        if(wert(this.hand)>21){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public String toString(){
         return "";
     }
 
-    public int wert(Hand hand){
-        for(int i = hand.getLength()){
-            
+    public int wert(DynArray<Card> hand){
+        int wert=0;
+        for(int i = 0; i<this.hand.getLength(); i++){
+            wert= wert+hand.getItem(i).getWert();
         }
+        return wert;
     }
 }

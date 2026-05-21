@@ -26,8 +26,8 @@ public class Hand {
         return "";
     }
 
-    public int wert(Hand spielerhand){
-        for(int i = spielerhand.getLength()){
+    public int wert(Hand hand){
+        for(int i = hand.getLength()){
             
         }
     }

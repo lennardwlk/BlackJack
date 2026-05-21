@@ -25,4 +25,10 @@ public class Hand {
     public String toString(){
         return "";
     }
+
+    public int wert(Hand hand){
+        for(int i = hand.getLength()){
+            
+        }
+    }
 }

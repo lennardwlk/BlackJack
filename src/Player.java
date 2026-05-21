@@ -1,4 +1,3 @@
 public class Player {
-    Hand hand = new Hand();
-    Hand spielerhand = this.hand;
+    Hand spielerhand = new Hand();
 }

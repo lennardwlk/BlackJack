@@ -1,7 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Random;
 
 public class Card {
     private String name;
@@ -29,8 +25,5 @@ public class Card {
     public char getFarbe(){
         return this.farbe;
     }
-
-
-
 
 }

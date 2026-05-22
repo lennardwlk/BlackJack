@@ -18,7 +18,7 @@ public class Hand {
     }
 
     public boolean checkFiveCardCharlie(){
-        if(this.hand.getLength()==5){
+        if(this.hand.getLength()==5 && !checkBust()){
             return true;
         } else{
             return false;
@@ -39,8 +39,16 @@ public class Hand {
 
     public int wert(DynArray<Card> hand){
         int wert=0;
+        int asse = 0;
         for(int i = 0; i<this.hand.getLength(); i++){
             wert= wert+hand.getItem(i).getWert();
+            if(hand.getItem(i).getWert() == 11){
+                asse++;
+            }
+        }
+        while(wert > 21 && asse > 0){
+            wert -= 10; // Ass von 11 auf 1 reduzieren
+            asse--;
         }
         return wert;
     }

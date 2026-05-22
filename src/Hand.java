@@ -52,4 +52,8 @@ public class Hand {
         }
         return wert;
     }
+
+    public int getAnzahlKarten(){
+        return this.hand.getLength();
+    }
 }

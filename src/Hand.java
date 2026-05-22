@@ -57,11 +57,16 @@ public class Hand {
         return this.hand.getLength();
     }
 
-    public String getKarten(Hand hand){
-        String karten = "";
-            for(int i = 0; i < hand.getAnzahlKarten(); i++){
-                karten = karten + hand;
-            }
-        return karten;
+    public Card neuekarte(int i){
+        return this.hand.getItem(i);
+    }
+
+    public String karte(){
+        Hand hand= new Hand();
+        String name="";
+        for(int i =0; i<hand.getAnzahlKarten();i++){
+            name= name + neuekarte(i).getName() + "\n";
+        }
+        return name;
     }
 }

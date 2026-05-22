@@ -52,4 +52,10 @@ public class Hand {
         }
         return wert;
     }
+
+    public String getKarten(DynArray<Card> hand){
+        for(int i = 0; i < hand.getLength(); i++){
+            String(hand[i]);
+        }
+    }
 }

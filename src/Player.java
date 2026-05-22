@@ -16,5 +16,6 @@ public class Player {
         //Einsatz verdoppeln+Karte ziehen
         System.out.println("Der Einsatz wurde verdoppelt!");
         this.hand.karteZiehen(this.shoe.getObersteKarte());
+
     }
 }

@@ -61,7 +61,7 @@ public class Hand {
         return this.hand.getItem(i);
     }
 
-    public String karte(){
+    public String alleKarten(){
         Hand hand= new Hand();
         String name="";
         for(int i =0; i<hand.getAnzahlKarten();i++){

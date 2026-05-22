@@ -17,7 +17,7 @@ public class Dealer {
     public void zieheZweiKarten(Shoe shoe){
         this.hand.karteZiehen(shoe.getObersteKarte());
         System.out.println("Karten Dealer:" + "\n");
-        //System.out.println(this.hand.getName());
+        //System.out.println(this.hand.getKarten());
     }
 
 }

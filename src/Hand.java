@@ -5,7 +5,7 @@ public class Hand {
         this.hand=hand;
     }
 
-    public void addCard(Card c){
+    public void karteZiehen(Card c){
         this.hand.append(c);
     }
 

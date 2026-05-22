@@ -53,6 +53,10 @@ public class Hand {
         return wert;
     }
 
+    public int getAnzahlKarten(){
+        return this.hand.getLength();
+    }
+
     public String getKarten(DynArray<Card> hand){
         for(int i = 0; i < hand.getLength(); i++){
             String(hand[i]);

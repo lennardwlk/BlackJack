@@ -2,7 +2,7 @@ public class Hand {
     private DynArray<Card> hand;
 
     public Hand(){
-        this.hand=hand;
+        this.hand=new DynArray<>();
     }
 
     public void karteZiehen(Card c){
@@ -35,6 +35,10 @@ public class Hand {
 
     public String toString(){
         return "";
+    }
+
+    public int wert(){
+        return wert(this.hand);
     }
 
     public int wert(DynArray<Card> hand){

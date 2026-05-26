@@ -1,10 +1,14 @@
 public class Player {
-    Hand hand = new Hand();
-    Card card;
+    private Hand hand = new Hand();
     Shoe shoe;
 
-    public Player(){
-        this.hand=hand;
+    public Player(Shoe shoe){
+        this.hand= new Hand();
+        this.shoe = shoe;
+    }
+
+    public void hit(){
+        this.hand.karteZiehen(this.shoe.getObersteKarte());
     }
 
     public void stand(){

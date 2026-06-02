@@ -2,13 +2,12 @@ public class Player {
     private Hand hand = new Hand();
     Shoe shoe;
 
-    public Player(Shoe shoe){
+    public Player(){
         this.hand= new Hand();
-        this.shoe = shoe;
     }
 
-    public void hit(){
-        this.hand.karteZiehen(this.shoe.getObersteKarte());
+    public void hit(Shoe shoe){
+        this.hand.karteZiehen(shoe.getObersteKarte());
     }
 
     public void stand(){
@@ -21,5 +20,8 @@ public class Player {
         System.out.println("Der Einsatz wurde verdoppelt!");
         this.hand.karteZiehen(this.shoe.getObersteKarte());
 
+    }
+    public Hand getHand() {
+        return hand;
     }
 }

@@ -3,9 +3,12 @@ public class Dealer {
     private Shoe shoe;
 
 
-    public Dealer(Shoe shoe){
+    public Dealer(){
         this.hand = new Hand();
-        this.shoe = shoe;
+    }
+
+    public void hit(Shoe shoe){
+        this.hand.karteZiehen(shoe.getObersteKarte());
     }
 
     public void playHand(){
@@ -15,6 +18,15 @@ public class Dealer {
     }
     public void start(){
 
+    }
+    public void playHand(Shoe shoe) {
+        while (hand.wert() < 17) {
+            hit(shoe);
+        }
+    }
+
+    public Hand getHand() {
+        return hand;
     }
 
     public void zieheZweiKarten(){

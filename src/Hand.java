@@ -2,7 +2,7 @@ public class Hand {
     private DynArray<Card> hand;
 
     public Hand(){
-        this.hand=new DynArray<>();
+        this.hand=new DynArray<Card>();
     }
 
     public void karteZiehen(Card c){
@@ -34,7 +34,12 @@ public class Hand {
     }
 
     public String toString(){
-        return "";
+        String s = "";
+
+        for(int i = 0; i < hand.getLength(); i++){
+            s += hand.getItem(i).getName() + " ";
+        }
+        return s;
     }
 
     public int wert(){

@@ -17,7 +17,7 @@ public class Game {
             System.out.println();
             System.out.println("Deine Karten: " + player.getHand());
             System.out.println("Wert: " + player.getHand().wert());
-            System.out.println("Karten des Dealers: " + dealer.getHand() + "umgedreht");
+            System.out.println("Karten des Dealers: " + dealer.getHand());
             System.out.println("Wert: " + dealer.getHand().wert());
             if (player.getHand().checkBust()) {
                 System.out.println("Bust! Dealer gewinnt.");

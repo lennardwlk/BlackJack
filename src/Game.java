@@ -20,8 +20,18 @@ public class Game {
             dealer.hit(stapel);
 
             if (dealer.getHand().checkBlackjack()) {
-                    System.out.println("Der dealer hat einen Blackjack! Du verlierst.");
-                    return;
+                System.out.println("Der dealer hat einen Blackjack! Du verlierst.");
+                System.out.println("Möchtest du nochmal spielen? (ja/nein)");
+                nochEinSpielAbfrage = scanner.nextLine();
+                if (nochEinSpielAbfrage.equalsIgnoreCase("nein")) {
+                    nochEinSpiel = false;
+                }else if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
+                    player = new Player();
+                    dealer = new Dealer();
+                    stapel = new Shoe();
+                    nochEinSpiel = true;
+                }
+                return;
             }
 
             while (true) {

@@ -1,49 +1,67 @@
 import java.util.Scanner;
 public class Game {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         Shoe stapel = new Shoe();
         Dealer dealer = new Dealer();
         Player player = new Player();
+        boolean nochEinSpiel = true;
 
-        player.hit(stapel);
-        player.hit(stapel);
+        while(nochEinSpiel == true){
 
-        dealer.hit(stapel);
-        dealer.hit(stapel);
+            nochEinSpiel = false;
+
+            player.hit(stapel);
+            player.hit(stapel);
+
+            dealer.hit(stapel);
+            dealer.hit(stapel);
 
 
-        while (true) {
+            while (true) {
+                System.out.println();
+                System.out.println("Deine Karten: " + player.getHand());
+                System.out.println("Wert: " + player.getHand().wert());
+                System.out.println("Karten des Dealers: " + dealer.getHand().ersteKarte() + " [verdeckt]");
+                // System.out.println("Wert: " + dealer.getHand().wert());
+                if (player.getHand().checkBust()) {
+                    System.out.println("Bust! Dealer gewinnt.");
+                    return;
+                }
+                if (player.getHand().checkBlackjack()) {
+                    System.out.println("Blackjack! Du gewinnst.");
+                    return;
+                }
+                System.out.println("Hit oder Stand?");
+                String eingabe = scanner.nextLine();
+
+                if (eingabe.equalsIgnoreCase("hit")) {
+                    player.hit(stapel);
+                } else{
+                    break;
+                }
+            }
+            dealer.playHand(stapel);
             System.out.println();
-            System.out.println("Deine Karten: " + player.getHand());
-            System.out.println("Wert: " + player.getHand().wert());
             System.out.println("Karten des Dealers: " + dealer.getHand());
-            System.out.println("Wert: " + dealer.getHand().wert());
-            if (player.getHand().checkBust()) {
-                System.out.println("Bust! Dealer gewinnt.");
-                return;
-            }
-            if (player.getHand().checkBlackjack()) {
-                System.out.println("Blackjack! Du gewinnst.");
-                return;
-            }
-            System.out.println("Hit oder Stand?");
-            String eingabe = scanner.nextLine();
+            System.out.println("Dealer-Wert: " + dealer.getHand().wert());
 
-            if (eingabe.equalsIgnoreCase("hit")) {
-                player.hit(stapel);
-            } else{
-                break;
+            gewinnerBestimmen(player, dealer);
+            System.out.println("Möchtest du nochmal spielen? (ja/nein)");
+            String nochEinSpielAbfrage = scanner.nextLine();
+            if (nochEinSpielAbfrage.equalsIgnoreCase("nein")) {
+                nochEinSpiel = false;
+            }else if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
+                player = new Player();
+                dealer = new Dealer();
+                stapel = new Shoe();
+                nochEinSpiel = true;
             }
         }
-        dealer.playHand(stapel);
-        System.out.println();
-        System.out.println("Dealer: " + dealer.getHand());
-        System.out.println("Dealer-Wert: " + dealer.getHand().wert());
-
-        gewinnerBestimmen(player, dealer);
     }
-        public static void gewinnerBestimmen(Player player, Dealer dealer) {
+        
+    public static void gewinnerBestimmen(Player player, Dealer dealer) {
 
             int spieler = player.getHand().wert();
             int dealerWert = dealer.getHand().wert();

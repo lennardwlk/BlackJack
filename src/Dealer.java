@@ -11,14 +11,6 @@ public class Dealer {
         this.hand.karteZiehen(shoe.getObersteKarte());
     }
 
-    public void playHand(){
-        while(this.hand.wert() < 17){
-             this.hand.karteZiehen(this.shoe.getObersteKarte());
-        }
-    }
-    public void start(){
-
-    }
     public void playHand(Shoe shoe) {
         while (hand.wert() < 17) {
             hit(shoe);

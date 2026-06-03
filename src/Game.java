@@ -10,6 +10,7 @@ public class Game {
 
         while(nochEinSpiel == true){
 
+            String nochEinSpielAbfrage = "";
             nochEinSpiel = false;
 
             player.hit(stapel);
@@ -18,6 +19,10 @@ public class Game {
             dealer.hit(stapel);
             dealer.hit(stapel);
 
+            if (dealer.getHand().checkBlackjack()) {
+                    System.out.println("Der dealer hat einen Blackjack! Du verlierst.");
+                    return;
+            }
 
             while (true) {
                 System.out.println();
@@ -27,10 +32,32 @@ public class Game {
                 // System.out.println("Wert: " + dealer.getHand().wert());
                 if (player.getHand().checkBust()) {
                     System.out.println("Bust! Dealer gewinnt.");
+                    
+                    System.out.println("Möchtest du nochmal spielen? (ja/nein)");
+                    nochEinSpielAbfrage = scanner.nextLine();
+                    if (nochEinSpielAbfrage.equalsIgnoreCase("nein")) {
+                        nochEinSpiel = false;
+                    }else if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
+                        player = new Player();
+                        dealer = new Dealer();
+                        stapel = new Shoe();
+                        nochEinSpiel = true;
+                    }
                     return;
                 }
                 if (player.getHand().checkBlackjack()) {
                     System.out.println("Blackjack! Du gewinnst.");
+                    
+                    System.out.println("Möchtest du nochmal spielen? (ja/nein)");
+                    nochEinSpielAbfrage = scanner.nextLine();
+                    if (nochEinSpielAbfrage.equalsIgnoreCase("nein")) {
+                        nochEinSpiel = false;
+                    }else if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
+                        player = new Player();
+                        dealer = new Dealer();
+                        stapel = new Shoe();
+                        nochEinSpiel = true;
+                    }
                     return;
                 }
                 System.out.println("Hit oder Stand?");
@@ -48,8 +75,9 @@ public class Game {
             System.out.println("Dealer-Wert: " + dealer.getHand().wert());
 
             gewinnerBestimmen(player, dealer);
+
             System.out.println("Möchtest du nochmal spielen? (ja/nein)");
-            String nochEinSpielAbfrage = scanner.nextLine();
+            nochEinSpielAbfrage = scanner.nextLine();
             if (nochEinSpielAbfrage.equalsIgnoreCase("nein")) {
                 nochEinSpiel = false;
             }else if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {

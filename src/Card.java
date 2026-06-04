@@ -26,10 +26,6 @@ public class Card {
         return this.wert;
     }
 
-    public char getFarbe(){
-        return this.farbe;
-    }
-
 
 
 

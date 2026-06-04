@@ -42,10 +42,6 @@ public class Shoe {
         return stapel;
     }
 
-    public Stack<Card> getStapel(){
-        return this.cards;
-    }
-
     public Card getObersteKarte(){
         return this.cards.pop();
     }

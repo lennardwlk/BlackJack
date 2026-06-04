@@ -23,9 +23,7 @@ public class Game {
                 System.out.println("Der dealer hat einen Blackjack! Du verlierst.");
                 System.out.println("Möchtest du nochmal spielen? (ja/nein)");
                 nochEinSpielAbfrage = scanner.nextLine();
-                if (nochEinSpielAbfrage.equalsIgnoreCase("nein")) {
-                    nochEinSpiel = false;
-                }else if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
+                if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
                     player = new Player();
                     dealer = new Dealer();
                     stapel = new Shoe();
@@ -45,9 +43,7 @@ public class Game {
                     
                     System.out.println("Möchtest du nochmal spielen? (ja/nein)");
                     nochEinSpielAbfrage = scanner.nextLine();
-                    if (nochEinSpielAbfrage.equalsIgnoreCase("nein")) {
-                        nochEinSpiel = false;
-                    }else if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
+                    if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
                         player = new Player();
                         dealer = new Dealer();
                         stapel = new Shoe();
@@ -90,7 +86,8 @@ public class Game {
             nochEinSpielAbfrage = scanner.nextLine();
             if (nochEinSpielAbfrage.equalsIgnoreCase("nein")) {
                 nochEinSpiel = false;
-            }else if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
+            }else
+                if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
                 player = new Player();
                 dealer = new Dealer();
                 stapel = new Shoe();

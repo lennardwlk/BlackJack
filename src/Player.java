@@ -20,6 +20,7 @@ public class Player {
         System.out.println("Der Einsatz wurde verdoppelt!");
         this.hand.karteZiehen(this.shoe.getObersteKarte());
     }
+
     public Hand getHand() {
         return hand;
     }

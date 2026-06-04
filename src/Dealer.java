@@ -21,12 +21,5 @@ public class Dealer {
         return hand;
     }
 
-    public void zieheZweiKarten(){
-        this.hand.karteZiehen(this.shoe.getObersteKarte());
-        System.out.println("Karten Dealer:\n");
-        System.out.println("1. Karte: " + this.hand.ersteKarte());
-        this.hand.karteZiehen(this.shoe.getObersteKarte());
-        System.out.println("2. Karte: Verdeckt!");
-    }
 
 }

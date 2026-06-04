@@ -26,6 +26,7 @@ public class Hand {
     }
 
     public boolean checkBust(){
+        //Überprüfung ob man einen zu hohen Kartenwert
         if(wert(this.hand)>21){
             return true;
         }else{
@@ -34,6 +35,7 @@ public class Hand {
     }
 
     public String toString(){
+        //Hand wird zum String, um Ausgabe zu vereinfachen
         String s = "";
 
         for(int i = 0; i < hand.getLength(); i++){
@@ -49,7 +51,7 @@ public class Hand {
     public int wert(DynArray<Card> hand){
         int wert=0;
         int asse = 0;
-        for(int i = 0; i<this.hand.getLength(); i++){
+        for(int i = 0; i<this.hand.getLength(); i++){       //Wert der Hand berechnen
             wert= wert+hand.getItem(i).getWert();
             if(hand.getItem(i).getWert() == 11){
                 asse++;
@@ -71,7 +73,7 @@ public class Hand {
     }
 
     public String ersteKarte(){
-        Hand hand = new Hand();
+        //erste Karte aufrufen
         String name= karte(0).getName();
         return name;
     }

@@ -11,6 +11,7 @@ public class Shoe {
     }
 
     private DynArray<Card> kartenEinlesen() {
+        //einlesen der Karten
         DynArray<Card>karten = new DynArray<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("Karten.csv"))) {
             String line;
@@ -31,6 +32,7 @@ public class Shoe {
     }
 
     private Stack<Card> kartenMischen(){
+        //Karten mischen
         Random rand = new Random();
         Stack<Card> stapel = new Stack<>();
         DynArray<Card> ungemischt=kartenEinlesen();

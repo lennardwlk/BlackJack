@@ -3,15 +3,14 @@ public class Game {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Shoe stapel = new Shoe();
-        Dealer dealer = new Dealer();
-        Player player = new Player();
+
         boolean nochEinSpiel = true;
 
-        while(nochEinSpiel == true){
+        while(nochEinSpiel){
 
-            String nochEinSpielAbfrage = "";
-            nochEinSpiel = false;
+            Shoe stapel = new Shoe();
+            Dealer dealer = new Dealer();
+            Player player = new Player();
 
             player.hit(stapel);
             player.hit(stapel);
@@ -19,82 +18,63 @@ public class Game {
             dealer.hit(stapel);
             dealer.hit(stapel);
 
-            if (dealer.getHand().checkBlackjack()) {
-                System.out.println("Der dealer hat einen Blackjack! Du verlierst.");
-                System.out.println("Möchtest du nochmal spielen? (ja/nein)");
-                nochEinSpielAbfrage = scanner.nextLine();
-                if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
-                    player = new Player();
-                    dealer = new Dealer();
-                    stapel = new Shoe();
-                    nochEinSpiel = true;
-                }
-                return;
-            }
+            boolean rundeBeendet=false;
 
-            while (true) {
+            while (!rundeBeendet) {
                 System.out.println();
                 System.out.println("Deine Karten: " + player.getHand());
                 System.out.println("Wert: " + player.getHand().wert());
                 System.out.println("Karten des Dealers: " + dealer.getHand().ersteKarte() + " [verdeckt]");
-                // System.out.println("Wert: " + dealer.getHand().wert());
+                //System.out.println("Wert: " + dealer.getHand().wert());
+
                 if (player.getHand().checkBust()) {
                     System.out.println("Bust! Dealer gewinnt.");
-                    
-                    System.out.println("Möchtest du nochmal spielen? (ja/nein)");
-                    nochEinSpielAbfrage = scanner.nextLine();
-                    if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
-                        player = new Player();
-                        dealer = new Dealer();
-                        stapel = new Shoe();
-                        nochEinSpiel = true;
-                    }
-                    return;
+                    rundeBeendet = true;
+                    continue;
                 }
                 if (player.getHand().checkBlackjack()) {
                     System.out.println("Blackjack! Du gewinnst.");
-                    
-                    System.out.println("Möchtest du nochmal spielen? (ja/nein)");
-                    nochEinSpielAbfrage = scanner.nextLine();
-                    if (nochEinSpielAbfrage.equalsIgnoreCase("nein")) {
-                        nochEinSpiel = false;
-                    }else if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
-                        player = new Player();
-                        dealer = new Dealer();
-                        stapel = new Shoe();
-                        nochEinSpiel = true;
-                    }
-                    return;
+                    rundeBeendet = true;
+                    continue;
                 }
                 System.out.println("Hit oder Stand?");
                 String eingabe = scanner.nextLine();
 
                 if (eingabe.equalsIgnoreCase("hit")) {
                     player.hit(stapel);
-                } else{
-                    break;
+                } else if (eingabe.equalsIgnoreCase("stand")) {
+                    rundeBeendet = true;
+                } else {
+                    System.out.println("Ungültige Eingabe");
                 }
             }
-            dealer.playHand(stapel);
-            System.out.println();
-            System.out.println("Karten des Dealers: " + dealer.getHand());
-            System.out.println("Dealer-Wert: " + dealer.getHand().wert());
 
-            gewinnerBestimmen(player, dealer);
+            if (!player.getHand().checkBust()
+                    && !player.getHand().checkBlackjack()) {
 
-            System.out.println("Möchtest du nochmal spielen? (ja/nein)");
-            nochEinSpielAbfrage = scanner.nextLine();
-            if (nochEinSpielAbfrage.equalsIgnoreCase("nein")) {
-                nochEinSpiel = false;
-            }else
-                if (nochEinSpielAbfrage.equalsIgnoreCase("ja")) {
-                player = new Player();
-                dealer = new Dealer();
-                stapel = new Shoe();
-                nochEinSpiel = true;
+                if (dealer.getHand().checkBlackjack()) {
+                    System.out.println("Karten des Dealers: " + dealer.getHand());
+                    System.out.println("Dealer hat Blackjack! Du verlierst.");
+                }
+                else {
+                    dealer.playHand(stapel);
+
+                    System.out.println();
+                    System.out.println("Karten des Dealers: " + dealer.getHand());
+                    System.out.println("Dealer-Wert: " + dealer.getHand().wert());
+
+                    gewinnerBestimmen(player, dealer);
+                }
             }
+            System.out.println();
+            System.out.println("Nochmal spielen? (ja/nein)");
+            nochEinSpiel = scanner.nextLine().equalsIgnoreCase("ja");
         }
+
+        scanner.close();
     }
+
+
         
     public static void gewinnerBestimmen(Player player, Dealer dealer) {
 

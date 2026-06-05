@@ -1,5 +1,11 @@
 import java.util.Scanner;
 public class Game {
+
+    /**
+     * Startet das Blackjack-Spiel.
+     *
+     * @param args Kommandozeilenparameter
+     */
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -49,8 +55,7 @@ public class Game {
                 }
             }
 
-            if (!player.getHand().checkBust()
-                    && !player.getHand().checkBlackjack()) {
+            if (!player.getHand().checkBust() && !player.getHand().checkBlackjack()) {
 
                 if (dealer.getHand().checkBlackjack()) {
                     System.out.println("Karten des Dealers: " + dealer.getHand());
@@ -75,7 +80,14 @@ public class Game {
     }
 
 
-        
+
+    /**
+     * Vergleicht die Kartenwerte von Spieler und Dealer
+     * und gibt den Gewinner aus.
+     *
+     * @param player Spieler des Spiels
+     * @param dealer Dealer des Spiels
+     */
     public static void gewinnerBestimmen(Player player, Dealer dealer) {
 
             int spieler = player.getHand().wert();
@@ -96,18 +108,12 @@ public class Game {
         }
 
 
-
-
-
-
-        //Shoe erstellen
-        //Player und Dealer erstellen, beide bekommen Shoe übergeben
-        //Player bekommt 2 Karten, Dealer bekommt 2 Karten (1 verdeckt)
-        //Player kann hit, stand oder double wählen
-        //Player Zug zuende: Dealer spielt seinen Zug
-        //Zwischendurch bust bei beiden überprüfen
-
-
+    /**
+     * Fragt die Anzahl der Spieler ab.
+     *
+     * @param scanner Scanner für die Benutzereingabe
+     * @return Anzahl der Spieler
+     */
     private int abfrageAnzahl(Scanner scanner){
         System.out.println("Wie viele Spieler gibt es?");
         int anzahl = scanner.nextInt();

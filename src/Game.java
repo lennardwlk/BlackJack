@@ -1,3 +1,7 @@
+/**
+ * Hier startet man das Spiel
+ */
+
 import java.util.Scanner;
 public class Game {
 

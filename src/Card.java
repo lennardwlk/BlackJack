@@ -1,7 +1,6 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Random;
+/**
+ * Bauplan für ein Karten-Objekt
+ */
 
 public class Card {
     private String name;

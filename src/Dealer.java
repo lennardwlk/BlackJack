@@ -1,3 +1,7 @@
+/**
+ * Bauplan für ein Dealer-Objekt
+ */
+
 public class Dealer {
     private Hand hand;
     private Shoe shoe;

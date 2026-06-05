@@ -84,17 +84,6 @@ public class Stack<ContentType> {
         }
     }
 
-    public void printStack(Stack <ContentType> stack){
-        while(stack.top.getContent() != null){
-            System.out.println(stack.top.getContent());
-            stack.pop();
-            if(stack.top.getContent()==null) {
-                break;
-            }
-        }
-    }
-
-
 
     /* --------- Anfang der privaten inneren Klasse -------------- */
     public class Node {

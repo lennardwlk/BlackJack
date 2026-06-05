@@ -1,3 +1,7 @@
+/**
+ * Bauplan für ein Spieler-Objekt
+ */
+
 public class Player {
     private Hand hand = new Hand();
     Shoe shoe;

@@ -1,3 +1,7 @@
+/**
+ * Bauplan für ein Hand-Objekt
+ */
+
 public class Hand {
     private DynArray<Card> hand;
 

@@ -84,6 +84,9 @@ public class Stack<ContentType> {
         }
     }
 
+    /** 
+     * @param stack
+     */
     public void printStack(Stack <ContentType> stack){
         while(stack.top.getContent() != null){
             System.out.println(stack.top.getContent());

@@ -1,12 +1,12 @@
-/**
- * Bauplan für ein Schuh-Objekt
- */
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
-
+/**
+ * Bauplan für ein Schuh-Objekt
+ */
 public class Shoe {
     private Stack<Card> cards;
 

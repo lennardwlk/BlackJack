@@ -1,8 +1,9 @@
+
+
+import java.util.Scanner;
 /**
  * Hier startet man das Spiel
  */
-
-import java.util.Scanner;
 public class Game {
 
     /**
@@ -40,7 +41,7 @@ public class Game {
                 if (player.getHand().checkBust()) {
                     System.out.println("Bust! Dealer gewinnt.");
                     rundeBeendet = true;
-                    continue;
+                    continue; //skipt den Rest der Schleife und die Schleife beginnt wieder von vorne
                 }
                 if (player.getHand().checkBlackjack()) {
                     System.out.println("Blackjack! Du gewinnst.");

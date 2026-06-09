@@ -84,7 +84,7 @@ public class Hand {
 
     /**
      * Berechnet den Wert einer übergebenen Hand.
-     * Asse werden bei Bedarf von 11 auf 1 reduziert.
+     * Asse werden bei Bedarf von 11 auf 1 reduziert (Wenn ein Ass als 11 busten würde).
      *
      * @param hand Hand, deren Wert berechnet werden soll
      * @return Gesamtwert der Hand

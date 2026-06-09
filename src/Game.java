@@ -13,6 +13,7 @@ public class Game {
      */
     public static void main(String[] args) {
 
+        //Übernahme aus Eisladen
         Scanner scanner = new Scanner(System.in);
 
         boolean nochEinSpiel = true;
@@ -38,10 +39,11 @@ public class Game {
                 System.out.println("Karten des Dealers: " + dealer.getHand().ersteKarte() + " [verdeckt]");
                 //System.out.println("Wert: " + dealer.getHand().wert());
 
+                //Debugging der Schleife KI-Gestützt, ausgabe des continue Befehls, eigenständige Ausarbeitung
                 if (player.getHand().checkBust()) {
                     System.out.println("Bust! Dealer gewinnt.");
                     rundeBeendet = true;
-                    continue; //skipt den Rest der Schleife und die Schleife beginnt wieder von vorne
+                    continue; //skippt den Rest der Schleife und die Schleife beginnt wieder von vorne
                 }
                 if (player.getHand().checkBlackjack()) {
                     System.out.println("Blackjack! Du gewinnst.");
@@ -59,7 +61,7 @@ public class Game {
                     System.out.println("Ungültige Eingabe");
                 }
             }
-
+            
             if (!player.getHand().checkBust() && !player.getHand().checkBlackjack()) {
 
                 if (dealer.getHand().checkBlackjack()) {
@@ -119,7 +121,7 @@ public class Game {
      * @param scanner Scanner für die Benutzereingabe
      * @return Anzahl der Spieler
      */
-    private int abfrageAnzahl(Scanner scanner){
+    private int abfrageAnzahl(Scanner scanner){ //Idee für mehrspielerversion vom Programm, nicht umgesetzt
         System.out.println("Wie viele Spieler gibt es?");
         int anzahl = scanner.nextInt();
         scanner.nextLine();
